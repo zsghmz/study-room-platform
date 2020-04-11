@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>系统登录</title>
+    </head>
+    <style type="text/css">
+    a{
+        display: block;
+        font-size: 19px;
+        background-color:#7171FF;
+        text-decoration: none;
+        color:black;
+        cursor: default;
+        float: left;
+    }
+    a:hover { 
+        background-color: seashell;
+    }
+    </style>
+    <body style="background-color:lightgrey">
+        <div style="background-color:blue;margin-top: 0px;height: 40px;">
+            <div style="float: left;">
+                <img src="/static/image/logo.jpg" style="width:40px;height: 40px;" alt="logo">
+            </div>
+            <div style="float: left;">
+                <p style="font-size: 30px;margin-top: 0px;">振华自习室预约服务管理平台</p>
+            </div>
+        </div>
+        <div style="background: url(/static/image/room.jpg);background-size: cover;height: 450px;margin-top: 0px;">
+            <div style="height: 5px;"></div>
+            <div style="position:absolute;height: 20px;width: 100%; margin-top:200px;text-align: center;"><span id="msg">{{msg}}</span></div>
+            <div id="background" style="position: relative; background-color:rgb(120, 127, 194);height:350px;width: 280px;margin-left: 60%;">
+                <div id="login"style="">
+                    <p style="font-weight: bold;font-size: 30px;border-bottom: 1px solid #ee7700;">登录</p>
+                </div>
+                <form action="/user/login" method="POST">
+                    <div style="height: 30px;margin: 30px 20px;">
+                        <!--<label for="userName" style="text-align: center;margin: 0 auto;font-weight: bold;">用户名</label>-->
+                        <img src="/static/image/username.jpg"  style="width: 20px;height: 35px;position: absolute;"  alt=""/>
+                        <input type="text" name="username" id="userName" placeholder="输入用户名" style="height: 30px;margin-left: 20px;"/>
+                    </div>
+                    <div style="height: 30px;margin: 20px 20px;">
+                        <!--<label for="passWord" style="font-weight: bold;">密码</label>-->
+                        <img src="/static/image/password.jpg"  style="width: 20px;height: 35px;position: absolute;" alt=""/>
+                        <input type="password" name="password" id="passWord" placeholder="输入用户密码" style="height: 30px;margin-left: 20px;"/>
+                    </div>
+                    <div>
+                        <button type="submit" style="font-size: 20px;margin-top: 20px;margin-left: 70px;">登录</button>
+                    </div>
+                </form>
+                <div style="position:absolute;width: 120px; bottom: 10px;right: 10px;"><a href="../repassword">密码找回</a><a href="../register" style="padding-left: 5px;">注册</a></div>
+            </div>
+        </div>
+        <div id="foot">
+            <div>
+                <span style="text-align: center;display: block;margin-top: 10px;">联系邮箱：<span style="font-style:oblique">2570464699@qq.com</span></span>
+            </div>
+            <div>
+                <span style="text-align: center;display: block;">联系地址：济南大学</span>
+            </div>
+            <div>
+                <span style="text-align: center;display: block;">联系电话：15254137701</span>
+            </div>
+        </div>
+        
+    </body>
+
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>解除座位禁用</title>
+        <script src="/static/js/jquery-1.8.0.js"></script>
+    </head>
+    <style type="text/css">
+    form{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #define{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    label{
+        display: block;
+    }
+    input{
+        line-height: 20px;
+    }
+    </style>
+    <body>
+        <h1>解除座位禁用</h1>
+        <div style="width:100%;text-align: center;display: none;" id="prompt"><p>所需时间可能较长，请耐心等待。</p></div>
+        <form>
+            <label style="text-align: center;font-weight: bold;font-size: 17px;">座位信息</label><br/><br/>
+            <label for="floor">楼层：</label>
+            <input type="number" id="floor" name="floor" required="required" min="1" max="{{data.floorNum}}"><br/>
+            <label for="room">房间号：</label>
+            <input type="number" id="room" name="room" required="required" min="0" max="{{data.roomNum}}"><br/>
+            <label for="row">座位行号：</label>
+            <input type="number" id="row" name="row" required="required" min="0" max="{{data.rowNum}}"><br/>
+            <label for="col">座位列号：</label>
+            <input type="number" id="col" name="col" required="required" min="0" max="{{data.colNum}}"><br/><br/>
+            <input type="button" value="确定" id="define">
+        </form>
+        <script type="text/javascript">
+                $(document).ready(function(){
+                $("#define").click(function(){
+                $('#prompt').show();
+                var floor=$("#floor").val();
+                var room=$("#room").val();
+                var row=$("#row").val();
+                var col=$("#col").val();
+                $.ajax({
+                    url:"/relieve/relieve",
+                    type:"POST",
+                    data:{"floor":floor,"room":room,"row":row,"col":col},
+                    dataType:"json",
+                    success:function(res){
+                        $('#prompt').hide();
+                        if(!res.errno) alert('操作成功！');
+                        else alert('res.errmsg');
+                    }
+                })
+            });
+            });
+        </script>
+    </body>
+</html>

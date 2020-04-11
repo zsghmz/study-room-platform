@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>振华自习室预约管理服务平台</title>
+        <script src="/static/js/jquery-1.8.0.js"></script>
+    </head>
+    <style type="text/css">
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    a{
+        display: block;
+        font-size: 19px;
+        background-color:#7171FF;
+        margin-top: -2px;
+        text-decoration: none;
+        color:black;
+        cursor: default;
+        float:left;
+        margin-left:5px;
+    }
+    a:hover { 
+        background-color: seashell;
+    } 
+    </style>
+    <body>
+        <div style="position:fixed; height:10%; width:80%;background-color:#7171FF">
+            <div style="float: left;">
+                <img src="/static/image/logo.jpg" style="width:40px;height: 40px;margin-top: 10px;margin-left: 2px;" alt="logo">
+            </div>
+            <div style="float: left;">
+                <p style="font-size: 25px;margin-top: 10px;font-weight: bold;margin-left: 5px;">振华自习室预约服务管理平台</p>
+            </div>
+            <div style="float: left; margin-left: 10px;margin-top: 20px;">
+                <nav>
+                    <a href="../applylist1#div1" target="iframe2" id="a1">首页</a>
+                    <a href="../applylist1#div2" target="iframe2" id="a2">咨询台</a>
+                    <a href="../applylist1#div3" target="iframe2" id="a3">座位预约管理</a>
+                    <a href="../applylist1#div4" target="iframe2" id="a4">动态发布</a>
+                    <a href="../applylist1#div5" target="iframe2" id="a5">平台信箱</a>
+                    <a href="../applylist1#div6" target="iframe2" id="a6">关于我们</a>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <form action="/apply/logout" method="POST" style="position: fixed; height:10%;width: 5%;background-color: #7171FF;margin-left: 80%;">
+                <button type="submit" style="font-size: large; margin-top: 15px;" onclick="clearAllCookie()">注销</button>
+            </form>
+            <form action="/apply/judge" method="POST" style="position: fixed; height:10%;width: 15%;background-color: #7171FF;margin-left: 85%;">
+                <button type="submit" style="font-size: large; margin-top: 15px;">超级管理员</button>
+            </form>
+        </div>
+        <div>
+            <iframe src="../applylist1#div1/" frameborder="0" scrolling="no" id="iframe2" name="iframe2" style="position: fixed;width: 20%;height: 90%;top: 10%;"></iframe>
+            <iframe src="../applyshow1" frameborder="0" id="iframe3" name="iframe3" width="80%" style="position: fixed;width: 80%;height: 90%;top: 10%;left: 20%;"></iframe>
+        </div>
+
+
+        <script>
+             $(document).ready(function(){
+            // $('a').css('color','red');
+            $('#a1').click(function(){
+                // $('a').css('color','red');
+                $('#iframe3').attr('src','../applyshow1');
+            });
+            $('#a2').click(function(){
+                $('#iframe3').attr('src','../consult');
+            });
+            $('#a3').click(function(){
+                $('#iframe3').attr('src','../manage');
+            });
+            $('#a4').click(function(){
+                $('#iframe3').attr('src','../dynamic');
+            });
+            $('#a5').click(function(){
+                $('#iframe3').attr('src','../mailbox');
+            });
+            $('#a6').click(function(){
+                $('#iframe3').attr('src','../ourself');
+            });
+        });
+        </script>
+
+                
+        
+
+
+
+        <!--<script language="javascript">
+            var timeIframe;
+            window.onload = function() {
+                timeIframe = setTimeout(GetIframeStatus, 10);
+            }
+            function GetIframeStatus(iframe) {
+                alert("aaaa")
+                var iframe = document.getElementById(iframe.id);
+                var iframeWindow = iframe.contentWindow;
+                //内容是否加载完
+                if (iframeWindow.document.readyState == "complete") {
+                    var iframeWidth, iframeHeight;
+                    //获取Iframe的内容实际宽度
+                    iframeWidth = iframeWindow.document.documentElement.scrollWidth;
+                    //获取Iframe的内容实际高度
+                    iframeHeight = iframeWindow.document.documentElement.scrollHeight;
+                    //设置Iframe的宽度
+                    iframe.width = iframeWidth;
+                    //设置Iframe的高度
+                    iframe.height = iframeHeight;
+                } else {
+                    timeIframe = setTimeout(GetIframeStatus, 10);
+                }
+            }
+        </script>-->
+         <!--<script language="javascript">
+             function fun(){
+                 if(msg==undefined)
+                    alert("尊敬的用户，请先登录！")
+                else{
+                    alert("12345")
+                }
+             }
+         </script>-->
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="/static/js/jquery-1.8.0.js"></script>
+    </head>
+    <style>
+    .drop{
+        position: relative;
+        display: inline-block;
+    }
+    .drop_con{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 80px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0,0, 0.2);
+        padding: 12px 16px;
+    }
+    .butt{
+        font-size: 10px;
+        width: 80px;
+    }
+    .drop:hover .drop_con{display: block;}
+    /*<a>超链接 消除下划线 消除小手 点击放置不变色*/
+    a{
+        display: block;
+        font-size: 19px;
+        background-color:#7171FF;
+        margin-top: -2px;
+        text-decoration: none;
+        color:black;
+        cursor: default;
+        float:left;
+        margin-left:5px;
+    }
+    a:hover { 
+        background-color: seashell;
+    } 
+    </style>
+    <body bgcolor="#7171FF">
+        <div style="position: fixed;height: 20%;">
+            <div style="float: left;">
+                <img src="/static/image/logo.jpg" style="width:40px;height: 40px;" alt="">
+            </div>
+            <div style="float: left;">
+                <p style="font-size: 20px;margin-top: 4px;font-weight: bold;margin-left: 5px;">振华自习室预约服务管理平台</p>
+            </div>
+            <div style="float: left; margin-left: 10px;margin-top: 10px;">
+                <nav>
+                    <a href="../applylist1#div1" target="iframe2" id="a1">首页</a>
+                    <a href="../applylist1#div2" target="iframe2" id="a2">咨询台</a>
+                    <a href="../applylist1#div3" target="iframe2" id="a3">座位预约管理</a>
+                    <a href="../applylist1#div4" target="iframe2" id="a4">动态发布</a>
+                    <a href="../applylist1#div5" target="iframe2" id="a5">平台信箱</a>
+                    <a href="../applylist1#div6" target="iframe2" id="a6">关于我们</a>
+                </nav>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            // $('a').css('color','red');
+            $('#a1').click(function(){
+                // $('a').css('color','red');
+                $('#iframe3').attr('src','../applyshow1');
+            });
+            $('#a2').click(function(){
+                $('iframe3').attr('src','../applylist1#div2');
+            });
+            $('#a3').click(function(){
+                $('#iframe3').attr('src','../applylist1#div3');
+            });
+        });
+        </script>
+            <!--
+            <div class="drop">
+                <button type="button" onclick="" style="font-size:15px;">首页</button>
+                <div class="drop_con">
+                    <button type="button" onclick="" class="butt">用户信息</button>
+                    <button type="button" onclick="" class="butt">座位信息</button>
+                    <button type="button" onclick="" class="butt">图书信息</button>
+                </div>
+            </div>
+
+            <div style="height: 10%; width: 100%;position: relative;">
+        <div>
+            <iframe src="./applyhead/" frameborder="0" scrolling="no" id="iframe1" name="iframe1"  width="80%" ></iframe>
+        </div>
+        <div style="position: absolute; width: 20%;background-color: #7171FF;margin-right: 0px;float: left;">
+            <form action="/apply/logout" method="POST" ><button type="submit">注销</button></form>
+        </div>
+        
+        </div style="height: 10%; width: 100%;position: relative;">
+            
+            <button type="button" onclick="" style="font-size:15px;">咨询台</button>
+            <button type="button" onclick="" style="font-size:15px;">座位管理</button>
+            <button type="button" onclick="" style="font-size:15px;">图书管理</button>
+            <button type="button" onclick="" style="font-size:15px;">动态发布</button>
+            <button type="button" onclick="" style="font-size:15px;">平台信箱</button>
+            <button type="button" onclick="" style="font-size:15px;">关于我们</button>
+            -->
+
+    </body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>管理系统</title>
+        <script type="text/javascript" src="/static/js/jquery-1.8.0.js"></script>
+        <script type="text/javascript" src="/static/js/nunjucks.js"></script>
+    </head>
+        <style>
+        a{
+        font-size: 18px;
+        text-decoration: none;
+        color:black;
+        }
+        tr{
+            height: 18px;
+            font-size: 18px;
+        }
+        </style>
+    <body>
+        <header style="position: relative;width: 100%;height: 10%;">
+            <div style="position: absolute;">
+                <h1 style="width: 300px;margin-top: -5px;">超级管理员系统</h1>
+            </div>
+            <div style="position: absolute;margin-left: 300px;margin-top: 10px;">
+                <a href="../initialize">系统初始化</a>
+                <a href="../damage">座位禁用报备</a>
+                <a href="../relieve">解除报备</a>
+            </div>
+        </header>
+        <div style="position: absolute; margin-top: 5%;border: 2px outset black; width: 98%;height: 500px;">
+            <div style="background-color: burlywood;"><label style="font-size: 18px;">用户信息管理</label></div>
+            <div><button>添加</button><button>删除</button></div>
+            <form id="selectInfo">
+                <label for="usename">昵称：</label><input type="text" name="usename" id="usename"/>
+                <label for="name">姓名：</label><input type="text" name="name" id="name"/>
+                <label for="phone">手机号：</label><input type="text" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" name="phone" id="phone" maxlength="11"/>
+                <input type="button" id="select" value="查询"/>
+                <label id="lab" style="display: none;">{{data[0].userName}}</label>
+            </form>
+            <br/>
+            <table id="tabInfo"; border="1" cellspacing="0" style="width: 80%; margin-left: 10%;" title="用户信息管理">
+                <thead>
+                    <tr style="height: 20px;">
+                        <th field="cb" style="width: 20px;"><input id="check" type="checkbox"/></th>
+                        <th>id</th>
+                        <th>昵称</th>
+                        <th>密码</th>
+                        <th>姓名</th>
+                        <th>学院</th>
+                        <th>学号</th>
+                        <th>性别</th>
+                        <th>手机号</th>
+                        <th style="width: 80px;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <form action="">
+                        <tr>
+                            <td><input type="checkbox"/></td>
+                            <td>{{item.id}}</td>
+                            <td>{{item.userName}}</td>
+                            <td>{{item.userPassword}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.major}}</td>
+                            <td>{{item.userNum}}</td>
+                            <td>{{item.sex}}</td>
+                            <td>{{item.userPhone}}</td>
+                            <td><a href="" style="color:blue;font-size: 15px;">删除</a><a href="" style="color:blue;font-size: 15px;">修改</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <nav class="pageNav">
+                {{pagination | safe}}
+            </nav>
+        </div>
+
+
+        <script>
+            $(document).ready(function(){
+                $("#check").change(function(){
+                    if($("#check").attr("checked")){
+                        alert("是否要全部选中，请谨慎操作！")
+                        $("input:checkbox").prop("checked",true);
+                    }
+                    else{
+                        $("input:checkbox").prop("checked",false);
+                    }
+                });
+            });
+            $(document).ready(function(){
+                $("#select").click(function(){
+                    var uname=$("#usename").val();
+                    var name=$("#name").val();
+                    var phone=$("#phone").val();
+                    if(uname=="" || name=="" || phone==""){
+                        alert("请完善信息！");
+                        return;
+                    }
+                    $.ajax({
+                        type:"POST",
+                        url:"admin/select",
+                        dataType:"json",
+                        data:{"uname":uname, "name":name, "phone":phone},
+                        success:function(res){
+                            if(!res.errno) {
+                                alert("成功！");
+                                $('#lab').show()
+                                return;}
+                            else alert(reserrmag);
+                        }
+                    });
+                });
+            });
+            // window.onload=function(){
+            //     $.ajax({
+            //         type:"POST",
+            //         url:"/admin/index",
+            //         //dataType:"json",
+            //         success:function(data){
+            //             console.log(data);
+            //             alert("1111");
+            //             alert(data)
+            //         }
+            //     });
+            // }
+        </script>
+    </body>
+</html>
